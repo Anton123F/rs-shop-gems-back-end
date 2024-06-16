@@ -1,0 +1,63 @@
+openapi: '3.0.0'
+info:
+  title: Gem Store API
+  version: '1.0.0'
+servers:
+  - url: 'https://rbiarsxrlh.execute-api.us-east-1.amazonaws.com/prod'
+paths:
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Get all products
+      responses:
+        '200':
+          description: An array of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /products/{id}:
+    get:
+      tags:
+        - Products
+      summary: Get a product by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: The product ID
+      responses:
+        '200':
+          description: A product object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '1'
+        title:
+          type: string
+          example: 'Jade'
+        price:
+          type: string
+          example: '100'
