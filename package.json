@@ -8,10 +8,11 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
+    "single-test": "npm test -- --testNamePattern \"example.test\"",
     "cdk": "cdk",
-    "deploy": "npm run build && cdk synth && cdk deploy",
-    "example": "npm run build && webpack && cdk synth && cdk deploy",
-    "destroy": "cdk destroy"
+    "deploy": "npm run build && webpack && cdk synth && cdk deploy",
+    "destroy": "cdk destroy",
+    "webpack": "webpack"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -27,8 +28,12 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.602.0",
+    "@aws-sdk/lib-dynamodb": "^3.602.0",
     "aws-cdk-lib": "^2.144.0",
     "constructs": "^10.3.0",
-    "source-map-support": "^0.5.21"
+    "dotenv": "^16.4.5",
+    "source-map-support": "^0.5.21",
+    "yup": "^1.4.0"
   }
 }

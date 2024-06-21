@@ -3,7 +3,7 @@ info:
   title: Gem Store API
   version: '1.0.0'
 servers:
-  - url: 'https://rbiarsxrlh.execute-api.us-east-1.amazonaws.com/prod'
+  - url: 'https://dnfb8dap4i.execute-api.us-east-1.amazonaws.com/prod'
 paths:
   /products:
     get:
@@ -19,6 +19,59 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+        '404':
+          description: No products found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Database or connection error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      tags:
+        - Products
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Database or connection error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
   /products/{id}:
     get:
       tags:
@@ -47,6 +100,15 @@ paths:
                 properties:
                   message:
                     type: string
+        '500':
+          description: Database or connection error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 components:
   schemas:
     Product:
@@ -59,5 +121,11 @@ components:
           type: string
           example: 'Jade'
         price:
+          type: number
+          example: 100
+        count:
+          type: number
+          example: 10
+        description:
           type: string
-          example: '100'
+          example: 'Some description'

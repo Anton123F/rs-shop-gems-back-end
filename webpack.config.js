@@ -2,13 +2,11 @@ const path = require('path');
 const fs = require('fs');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// Read all files in the "functions" directory
-const functionsDir = path.join(__dirname, 'lambda_function_handlers');
+const functionsDir = path.join(__dirname, 'handlers');
 const functionFiles = fs.readdirSync(functionsDir);
 
-// Create an entry object mapping each TypeScript file in the "functions" directory to its output JavaScript file in the "dist" directory
 const entry = functionFiles.reduce((entries, file) => {
-  if (path.extname(file) === '.ts' && !file.endsWith('.d.ts')) { // Only process .ts files and exclude .d.ts files
+  if (path.extname(file) === '.ts' && !file.endsWith('.d.ts')) {
     const functionName = path.parse(file).name;
     entries[`${functionName}-compiled`] = path.join(functionsDir, file);
   }
@@ -42,9 +40,15 @@ module.exports = {
   },
   devtool: false,
   optimization: {
-    minimize: false
+    minimize: false,
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  externals: {
+    '@aws-sdk/client-dynamodb': '@aws-sdk/client-dynamodb',
   },
   plugins: [
-    new CleanWebpackPlugin(), // Clean the "dist" directory before each build
+    new CleanWebpackPlugin(),
   ],
 };
