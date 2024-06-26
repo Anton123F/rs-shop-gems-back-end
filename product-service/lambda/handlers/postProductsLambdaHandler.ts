@@ -48,6 +48,7 @@ export const handler = async (event: any) => {
         body: JSON.stringify({message: err.errors}),
       };
     } else if (err instanceof DatabaseError) {
+      console.log(`data base error`);
       console.log(err)
       return {
         statusCode: 500,

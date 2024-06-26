@@ -29,6 +29,7 @@ export const handler = async (event: any) => {
     };
   } catch (err: any) {
     if (err instanceof DatabaseError) {
+      console.log(`database error`)
       return {
         statusCode: 500,
         headers: {...HEADERS, ...REQUEST_METHODS.GET},
