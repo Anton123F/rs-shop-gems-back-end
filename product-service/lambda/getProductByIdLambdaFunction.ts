@@ -4,6 +4,7 @@ import * as iam from "aws-cdk-lib/aws-iam";
 
 export function createGetProductByIdFunction(scope: Construct, env: any, role: iam.IRole) {
   return new lambda.Function(scope, 'GetProductById', {
+    functionName: 'GetProductByIdFunction',
     runtime: lambda.Runtime.NODEJS_20_X,
     code: lambda.Code.fromAsset('dist'),
     handler: 'getProductByIdLambdaHandler-compiled.handler',

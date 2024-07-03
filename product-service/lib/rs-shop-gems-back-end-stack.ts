@@ -23,8 +23,11 @@ export class RsShopGemsBackEndStack extends cdk.Stack {
       assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
     });
 
+    const policy = iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole');
+    role.addManagedPolicy(policy);
+
     role.addToPolicy(new iam.PolicyStatement({
-      actions: ['dynamodb:PartiQLSelect', 'dynamodb:PartiQLInsert', 'dynamodb:PutItem'],
+      actions: ['dynamodb:PutItem', 'dynamodb:Scan'],
       resources: [productsTable.tableArn, stocksTable.tableArn],
     }));
 

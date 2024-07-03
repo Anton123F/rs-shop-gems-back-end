@@ -49,8 +49,8 @@ export const handler = async (event: any) => {
     }
   }
 };
-handler({
-  pathParameters: {
-    id: '103'
-  }
-})
+// handler({
+//   pathParameters: {
+//     id: '103'
+//   }
+// })

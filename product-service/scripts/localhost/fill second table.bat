@@ -10,7 +10,7 @@ if %choice%==1 (
 )
 set table=stocks
 @echo off
-aws dynamodb put-item --table-name stocks --item "{\"stocksId\": {\"S\": \"1\"}, \"product_id\": {\"S\": \"101\"}, \"count\": {\"N\": \"10\"}}" %endpoint% --region us-east-1
-aws dynamodb put-item --table-name stocks --item "{\"stocksId\": {\"S\": \"2\"}, \"product_id\": {\"S\": \"102\"}, \"count\": {\"N\": \"5\"}}" %endpoint% --region us-east-1
-aws dynamodb put-item --table-name stocks --item "{\"stocksId\": {\"S\": \"3\"}, \"product_id\": {\"S\": \"103\"}, \"count\": {\"N\": \"17\"}}" %endpoint% --region us-east-1
+aws dynamodb put-item --table-name stocks --item "{\"id\": {\"S\": \"1\"}, \"product_id\": {\"S\": \"101\"}, \"count\": {\"N\": \"10\"}}" %endpoint% --region us-east-1
+aws dynamodb put-item --table-name stocks --item "{\"id\": {\"S\": \"2\"}, \"product_id\": {\"S\": \"102\"}, \"count\": {\"N\": \"5\"}}" %endpoint% --region us-east-1
+aws dynamodb put-item --table-name stocks --item "{\"id\": {\"S\": \"3\"}, \"product_id\": {\"S\": \"103\"}, \"count\": {\"N\": \"17\"}}" %endpoint% --region us-east-1
 pause

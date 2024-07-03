@@ -45,4 +45,4 @@ export const handler = async (event: any) => {
   }
 };
 
-handler({});
+// handler({});

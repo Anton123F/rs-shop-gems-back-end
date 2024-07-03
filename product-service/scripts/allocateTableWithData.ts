@@ -1,13 +1,12 @@
 import {mockProducts, mockStocks} from "../utils/mockData";
-const { DynamoDBClient} = require("@aws-sdk/client-dynamodb");
+import {DynamoDBClient} from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import {CreateTableCommand, KeyType, ScalarAttributeType} from "@aws-sdk/client-dynamodb";
 import {IProduct, IStocks} from "../types/types";
 import {getEnvironmentTables} from "../utils/utils";
 
 const client = new DynamoDBClient({
-  region: "us-east-1",
-  endpoint: 'http://localhost:8000'
+  region: "us-east-1"
 });
 
 const {PRODUCTS_TABLE, STOCKS_TABLE} = getEnvironmentTables();
@@ -46,5 +45,6 @@ async function createAndFillTable(tableName: string, tableData: IProduct[] | ISt
   }
 }
 
+///!!!!!!! need to add delay before table creating and table fill !!!!
 createAndFillTable(PRODUCTS_TABLE, mockProducts);
 createAndFillTable(STOCKS_TABLE, mockStocks);

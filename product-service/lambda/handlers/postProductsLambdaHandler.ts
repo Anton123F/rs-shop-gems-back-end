@@ -66,11 +66,11 @@ export const handler = async (event: any) => {
   }
 };
 
-handler({
-  body: JSON.stringify({
-    title: 'Enot',
-    description: 'enot description',
-    price: 100,
-    count: 3
-  })
-})
+// handler({
+//   body: JSON.stringify({
+//     title: 'Enot',
+//     description: 'enot description',
+//     price: 100,
+//     count: 3
+//   })
+// })

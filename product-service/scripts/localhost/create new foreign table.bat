@@ -14,8 +14,8 @@ if "!choice!"=="2" (
 
 aws dynamodb create-table ^
     --table-name stocks ^
-    --attribute-definitions AttributeName=stocksId,AttributeType=S AttributeName=product_id,AttributeType=S ^
-    --key-schema AttributeName=stocksId,KeyType=HASH AttributeName=product_id,KeyType=RANGE ^
+    --attribute-definitions AttributeName=id,AttributeType=S AttributeName=product_id,AttributeType=S ^
+    --key-schema AttributeName=id,KeyType=HASH AttributeName=product_id,KeyType=RANGE ^
     --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 ^
     !ENDPOINT! ^
     --region us-east-1
