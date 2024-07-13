@@ -1,0 +1,48 @@
+openapi: '3.0.0'
+info:
+  title: Gem Store API
+  version: '1.0.0'
+servers:
+  - url: 'https://x0ykj11t40.execute-api.us-east-1.amazonaws.com'
+paths:
+  /import:
+    get:
+      tags:
+        - Import
+      summary: Get a signed URL for a CSV file import
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: true
+          description: The name of the CSV file to import
+      responses:
+        '200':
+          description: Signed URL generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signedUrl:
+                    type: string
+        '400':
+          description: Invalid file name. File name must not be empty and must have a .csv extension
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Error generating signed URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+# ... rest of your API specification ...
