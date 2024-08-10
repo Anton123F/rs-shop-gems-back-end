@@ -27,7 +27,9 @@ export const getStocksById = async (id: string): Promise<IStocks> => {
 
     const defaultProps = {
       TableName: STOCKS_TABLE,
-      Key: {id},
+      Key: {
+        product_id: id,
+      },
     }
     const scanCommand = new GetCommand (defaultProps);
     const data = await docClient.send(scanCommand);

@@ -27,7 +27,7 @@ export class RsShopGemsBackEndStack extends cdk.Stack {
     role.addManagedPolicy(policy);
 
     role.addToPolicy(new iam.PolicyStatement({
-      actions: ['dynamodb:PutItem', 'dynamodb:Scan'],
+      actions: ['dynamodb:PutItem', 'dynamodb:Scan', 'dynamodb:GetItem'],
       resources: [productsTable.tableArn, stocksTable.tableArn],
     }));
 

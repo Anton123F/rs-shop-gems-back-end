@@ -6,6 +6,7 @@ const ProductSchema = object({
   title: string().required().default(""),
   description: string().default(""),
   price: number().positive().required().defined().default(0),
+  imageURL: string().required().default(""),
 });
 
 const StockSchema = object({
@@ -19,6 +20,7 @@ export const productValidation = async (product: IProduct) => {
     title: product.title,
     price: product.price,
     description: product.description,
+    imageURL: product.imageURL,
   }
 
   await ProductSchema.validate(productObj);

@@ -1,0 +1,15 @@
+#will be generate inside docker image so there is no need to add it
+node_modules
+#also will be create after build inside image
+dist
+
+
+#unnessessyry file for docker image
+.git
+.gitignore
+Dockerfile
+.dockerignore
+npm-debug.log
+podman_commands.txt
+Script.sql
+test-server.js

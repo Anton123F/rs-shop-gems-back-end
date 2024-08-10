@@ -2,13 +2,13 @@ export interface IProduct {
   id: string,
   title: string,
   price: number,
-  description: string
+  description: string,
+  imageURL: string,
 }
 
 export interface IStocks {
   product_id: string,
   count: number,
-  id: string,
 }
 
 export interface IFullProduct {

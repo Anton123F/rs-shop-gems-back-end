@@ -12,7 +12,7 @@ import {productValidation, stockValidation} from "../../utils/validation";
 export const handler = async (event: any) => {
   console.log(event);
   const body = JSON.parse(event.body);
-  const { price, description, count, title} = body;
+  const { price, description, count, title, imageURL} = body;
   const id = generateRandomId();
   const {PRODUCTS_TABLE, STOCKS_TABLE} = getEnvironmentTables();
 
@@ -21,12 +21,12 @@ export const handler = async (event: any) => {
     price,
     title,
     description,
+    imageURL,
   };
 
   const stock: IStocks = {
     count,
-    product_id: id,
-    id: generateRandomId()
+    product_id: id
   }
 
   try {

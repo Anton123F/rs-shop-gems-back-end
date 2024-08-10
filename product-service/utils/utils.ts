@@ -13,7 +13,8 @@ export const groupTablesData = (mainTable: IProduct[], additionalTable: IStocks[
       title: product.title,
       price: product.price,
       count: stock ? stock.count : 0,
-      description: product.description
+      description: product.description,
+      imageURL: product.imageURL,
     };
   });
 }

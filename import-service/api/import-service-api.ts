@@ -9,7 +9,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 export function createImportProductsApi(stack: cdk.Stack, handlers: nodeJsLambda.NodejsFunction) {
   const api = new apiGateway.HttpApi(stack, 'importProductsApi', {
     corsPreflight: {
-      allowOrigins: ['https://d15z2m151l8njs.cloudfront.net'],
+      allowOrigins: ['https://d1r3jmz9mesihr.cloudfront.net'],
       allowMethods: [apiGateway.CorsHttpMethod.GET, apiGateway.CorsHttpMethod.POST],
       allowHeaders: ['Authorization'],
       maxAge: cdk.Duration.days(10),

@@ -1,0 +1,3 @@
+podman build -t anton123f-bff-api -f Dockerfile
+podman run --rm -it image_name_or_id sh
+podman inspect --format='{{.Config.Env}}' <container-id-or-name>
